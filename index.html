@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hughie Erskine — Aviation, Finance & AI</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Newsreader (Editorial Serif), Inter (Sans), JetBrains Mono (Mono) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hughie Erskine</title>
+
+  <!-- Google Fonts: Syne (Display), Cormorant Garamond (Editorial Serif), Plus Jakarta Sans (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-  
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration for warm editorial palette -->
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Newsreader', 'Georgia', 'serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            display: ['Syne', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            paper: '#FAF8F5',
-            paperCard: '#FFFFFF',
-            paperBorder: '#EAE3D8',
-            paperBorderSubtle: '#F2ECE2',
-            textPrimary: '#1E2630',
-            textSecondary: '#4A5565',
-            textMuted: '#8A95A5',
-            pastelBlue: {
-              soft: '#EDF4FB',
-              border: '#CCE2F3',
-              text: '#204E71',
+            stone: {
+              50: '#FAF9F6',
+              100: '#F4F2EB',
+              200: '#E7E3D8',
+              300: '#D5CFC1',
+              400: '#A9A293',
+              500: '#837B6D',
+              600: '#645D52',
+              700: '#48433B',
+              800: '#2A2723',
+              900: '#171614',
+              950: '#0C0B0A',
             },
-            pastelYellow: {
-              soft: '#FEF9EB',
-              border: '#FDE68A',
-              text: '#92400E',
+            terracotta: {
+              400: '#E07A5F',
+              500: '#D1603D',
+              600: '#B84A29',
             }
           }
         }
@@ -50,236 +50,722 @@
   </script>
 
   <style>
-    body {
-      background-color: #FAF8F5;
-      color: #1E2630;
-      -webkit-font-smoothing: antialiased;
+    /* Grain texture overlay */
+    .bg-grain {
+      background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 0);
+      background-size: 24px 24px;
     }
-    ::selection {
-      background-color: #FEF3C7;
-      color: #78350F;
+    .dark .bg-grain {
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 0);
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(130, 120, 110, 0.25);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(130, 120, 110, 0.45);
     }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 transition-colors duration-300 font-sans antialiased selection:bg-stone-900 selection:text-white dark:selection:bg-stone-100 dark:selection:text-stone-900 min-h-screen flex flex-col relative bg-grain">
 
-  <!-- Minimalist Header -->
-  <header class="sticky top-0 z-30 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-paperBorder">
-    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- Floating Top Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-stone-50/80 dark:bg-stone-950/80 border-b border-stone-200/80 dark:border-stone-800/80 transition-colors">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
       
-      <a href="#" class="group flex items-baseline gap-2.5">
-        <span class="font-serif text-lg font-medium text-textPrimary tracking-tight group-hover:text-textSecondary transition-colors">
-          Hughie Erskine
-        </span>
-        <span class="hidden sm:inline text-xs font-mono text-textMuted">
-          Aviation • Finance • AI
-        </span>
+      <!-- Brand Name Only (No Subtitles) -->
+      <a href="#about" class="group flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-terracotta-500 group-hover:scale-125 transition-transform"></span>
+        <span class="font-display font-bold text-sm tracking-widest uppercase text-stone-900 dark:text-white">Hughie Erskine</span>
       </a>
 
-      <!-- Clean Header Navigation -->
-      <nav class="flex items-center gap-5 text-xs font-mono">
-        <a href="#writing" class="text-textSecondary hover:text-textPrimary transition-colors">Writing</a>
-        <a href="#projects" class="text-textSecondary hover:text-textPrimary transition-colors">Projects</a>
-        <a href="#about" class="text-textSecondary hover:text-textPrimary transition-colors">About</a>
-        <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium text-textSecondary bg-white border border-paperBorder hover:border-textSecondary/40 hover:text-textPrimary transition-all shadow-2xs ml-1">
-          <i class="ph-bold ph-x-logo text-xs"></i>
-          <span>Follow</span>
-        </a>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs font-medium uppercase tracking-wider text-stone-600 dark:text-stone-300">
+        <a href="#about" class="nav-item px-3 py-1.5 rounded-full hover:text-stone-950 dark:hover:text-white transition-colors">About</a>
+        <a href="#ventures" class="nav-item px-3 py-1.5 rounded-full hover:text-stone-950 dark:hover:text-white transition-colors">Ventures</a>
+        <a href="#events" class="nav-item px-3 py-1.5 rounded-full hover:text-stone-950 dark:hover:text-white transition-colors">Events</a>
+        <a href="#projects" class="nav-item px-3 py-1.5 rounded-full hover:text-stone-950 dark:hover:text-white transition-colors">Projects</a>
+        <a href="#cv" class="nav-item px-3 py-1.5 rounded-full hover:text-stone-950 dark:hover:text-white transition-colors">Curriculum Vitae</a>
       </nav>
 
+      <!-- Utility actions: Theme toggle & Direct Contact -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="p-2 rounded-full border border-stone-300 dark:border-stone-700 bg-stone-100/70 dark:bg-stone-900/70 hover:bg-stone-200 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200 transition-all focus:outline-none" aria-label="Toggle visual theme">
+          <svg id="sunIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="moonIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity">
+          Contact
+        </a>
+
+        <!-- Mobile hamburger button -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 text-stone-700 dark:text-stone-200 focus:outline-none" aria-label="Toggle navigation menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-stone-200 dark:border-stone-800 bg-stone-50/95 dark:bg-stone-950/95 px-6 py-4 space-y-3 font-medium text-sm">
+      <a href="#about" class="block py-1 hover:text-terracotta-500">About</a>
+      <a href="#ventures" class="block py-1 hover:text-terracotta-500">Ventures</a>
+      <a href="#events" class="block py-1 hover:text-terracotta-500">Events</a>
+      <a href="#projects" class="block py-1 hover:text-terracotta-500">Projects</a>
+      <a href="#cv" class="block py-1 hover:text-terracotta-500">Curriculum Vitae</a>
+      <a href="#contact" class="block py-1 hover:text-terracotta-500">Contact</a>
     </div>
   </header>
 
-  <main class="flex-grow">
-    
-    <!-- Hero / Editorial Introduction -->
-    <section class="pt-16 pb-14 border-b border-paperBorderSubtle">
-      <div class="max-w-3xl mx-auto px-6">
-
-        <p class="mt-6 text-base text-textSecondary leading-relaxed max-w-2xl font-normal">
-          MSc student in Market Finance with a BSc in Applied Mathematics. Light aircraft pilot with 5 years in the cockpit.
-        </p>
-        <p class="mt-6 text-base text-textSecondary leading-relaxed max-w-2xl font-normal">
-          Co-developing a web app to help VFR pilots prepare flights faster, more easily, and with greater safety. Launching soon—if you're a pilot, reach out on X to connect.
-        </p>
-        <p class="mt-6 text-base text-textSecondary leading-relaxed max-w-2xl font-normal">
-          This page is a digital notebook dedicated to sharing my research,analysis, and product builds.
-        </p>
-
-      </div>
-    </section>
-
-    <!-- Writing & Analysis Section -->
-    <section id="writing" class="py-14 border-b border-paperBorderSubtle">
-      <div class="max-w-3xl mx-auto px-6">
-        
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-8 pb-4 border-b border-paperBorder">
-          <h2 class="font-serif text-2xl text-textPrimary font-normal tracking-tight">
-            Analysis & Essays
-          </h2>
-          
-          <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
-            <button class="filter-btn active px-2.5 py-1 rounded-md bg-white border border-paperBorder text-textPrimary font-medium transition-all" data-filter="all">
-              All
-            </button>
-            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="aviation">
-              Aviation
-            </button>
-            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="finance">
-              Finance
-            </button>
-            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="ai">
-              AI
-            </button>
-          </div>
-        </div>
-
-        <!-- Clean Blank Structured Slots Ready for Content -->
-        <div class="space-y-5">
-
-          <div class="border border-dashed border-paperBorder rounded-xl p-6 sm:p-7 bg-white/40 hover:bg-white/70 transition-colors">
-            <div class="flex flex-wrap items-center gap-2 text-xs font-mono mb-2 text-textMuted">
-              <span class="px-2 py-0.5 rounded bg-pastelBlue-soft text-pastelBlue-text border border-pastelBlue-border text-[11px]">
-                Aviation Economics
-              </span>
-              <span>•</span>
-              <span>Draft in Review</span>
-            </div>
-            <h3 class="font-serif text-xl font-normal text-textPrimary">
-              [Upcoming Analysis Title]
-            </h3>
-            <p class="mt-2 text-xs sm:text-sm text-textSecondary leading-relaxed">
-              Article summary and core findings will appear here upon publication.
-            </p>
-            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-textMuted">
-              <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Publishing soon</span>
-            </div>
-          </div>
-
-          <div class="border border-dashed border-paperBorder rounded-xl p-6 sm:p-7 bg-white/40 hover:bg-white/70 transition-colors">
-            <div class="flex flex-wrap items-center gap-2 text-xs font-mono mb-2 text-textMuted">
-              <span class="px-2 py-0.5 rounded bg-pastelYellow-soft text-pastelYellow-text border border-pastelYellow-border text-[11px]">
-                Finance & Risk
-              </span>
-              <span>•</span>
-              <span>Draft in Review</span>
-            </div>
-            <h3 class="font-serif text-xl font-normal text-textPrimary">
-              [Upcoming Research Note]
-            </h3>
-            <p class="mt-2 text-xs sm:text-sm text-textSecondary leading-relaxed">
-              Detailed breakdown of market indices, treasury volatility, or capital deployment mechanics.
-            </p>
-            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-textMuted">
-              <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-              <span>Publishing soon</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Small Projects Section -->
-    <section id="projects" class="py-14 border-b border-paperBorderSubtle">
-      <div class="max-w-3xl mx-auto px-6">
-        
-        <div class="flex items-baseline justify-between mb-8 pb-3 border-b border-paperBorder">
-          <h2 class="font-serif text-2xl text-textPrimary font-normal tracking-tight">
-            Small Projects & Tools
-          </h2>
-          <span class="text-xs font-mono text-textMuted">Upcoming Releases</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
-          <div class="border border-dashed border-paperBorder rounded-xl p-5 bg-white/40 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between text-xs font-mono text-textMuted mb-2">
-                <span class="font-medium text-textPrimary">[Project Alpha]</span>
-                <span class="text-[11px] px-2 py-0.5 rounded bg-pastelBlue-soft text-pastelBlue-text border border-pastelBlue-border">CLI Tool</span>
-              </div>
-              <p class="text-xs text-textSecondary leading-relaxed mt-2">
-                Minimalist data extraction or quantitative tooling repository. Source code, documentation, and install scripts will be linked here.
-              </p>
-            </div>
-            <div class="mt-5 pt-3 border-t border-paperBorderSubtle flex items-center justify-between text-xs font-mono text-textMuted">
-              <span>Status: Staging</span>
-              <span>GitHub ↗</span>
-            </div>
-          </div>
-
-          <div class="border border-dashed border-paperBorder rounded-xl p-5 bg-white/40 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between text-xs font-mono text-textMuted mb-2">
-                <span class="font-medium text-textPrimary">[Project Beta]</span>
-                <span class="text-[11px] px-2 py-0.5 rounded bg-pastelYellow-soft text-pastelYellow-text border border-pastelYellow-border">Library</span>
-              </div>
-              <p class="text-xs text-textSecondary leading-relaxed mt-2">
-                Open-source model weights, embeddings index, or financial time-series helper utility ready for release.
-              </p>
-            </div>
-            <div class="mt-5 pt-3 border-t border-paperBorderSubtle flex items-center justify-between text-xs font-mono text-textMuted">
-              <span>Status: Testing</span>
-              <span>GitHub ↗</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
+  <!-- Main Content Container -->
+  <main class="flex-grow pt-28 pb-20 max-w-5xl mx-auto px-6 w-full">
 
     <!-- About Section -->
-    <section id="about" class="py-14">
-      <div class="max-w-3xl mx-auto px-6">
+    <section id="about" class="py-12 md:py-16 border-b border-stone-200 dark:border-stone-800/80">
+      <div class="max-w-3xl space-y-6">
         
-        <div class="bg-white border border-paperBorder rounded-2xl p-7 sm:p-9 shadow-2xs">
-          <div class="max-w-xl">
-            <span class="text-xs font-mono uppercase tracking-wider text-textMuted">About Hughie</span>
-            <h3 class="font-serif text-2xl text-textPrimary font-normal mt-1 mb-3">
-              Background & Focus
+        <!-- Clean Name Header (No finance subtitle underneath) -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight font-normal leading-tight text-stone-900 dark:text-stone-100">
+          Hughie Erskine
+        </h1>
+
+        <!-- Neutral Description (No Universities Mentioned) -->
+        <p class="text-lg text-stone-700 dark:text-stone-300 leading-relaxed font-normal">
+          Focused on <strong class="text-stone-900 dark:text-white font-medium">Market Finance & Risk Management</strong> with a background in <strong class="text-stone-900 dark:text-white font-medium">Applied Mathematics</strong>, social sciences, and economics.
+        </p>
+
+        <p class="text-stone-600 dark:text-stone-400 leading-relaxed">
+          Beyond academic work in statistical modeling and risk assessment, I hold a Light Aircraft Pilot Licence (LAPL) with over 110 flight hours, primarily flying Piper and Cessna.
+        </p>
+
+        <!-- Social & Contact: Only X & Email -->
+        <div class="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono">
+          <a href="mailto:hughie.erskine@outlook.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-white transition-all shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            hughie.erskine@outlook.com
+          </a>
+          <a href="https://x.com" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-stone-300 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-700 bg-stone-100/50 dark:bg-stone-900/40 text-stone-700 dark:text-stone-300 transition-all">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            Connect on X
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ventures Section -->
+    <section id="ventures" class="py-16 border-b border-stone-200 dark:border-stone-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-terracotta-500 dark:text-terracotta-400 font-semibold">Entrepreneurship</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-normal mt-1 text-stone-900 dark:text-white">Ventures</h2>
+        </div>
+        <p class="text-xs font-mono text-stone-500 mt-2 md:mt-0">Aviation Tech · 2026</p>
+      </div>
+
+      <!-- Feature Card: Alti-View -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-stone-100 via-stone-50 to-stone-200/40 dark:from-stone-900 dark:via-stone-900/60 dark:to-stone-950 border border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 transition-all duration-300 shadow-sm">
+        <div class="flex flex-col lg:flex-row gap-8 items-start justify-between">
+          <div class="space-y-4 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-stone-200/80 dark:bg-stone-800 text-stone-800 dark:text-stone-200">
+              <span>✈️ Aviation Tech</span>
+              <span class="text-stone-400">&bull;</span>
+              <span>In Development</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-serif font-medium text-stone-900 dark:text-white">
+              Alti-View — Building a Modern VFR Flight Preparation Tool
             </h3>
-            <p class="text-sm text-textSecondary leading-relaxed font-normal">
-              Exploring the convergence of capital markets, fleet dynamics, and machine intelligence. Building independent prototypes and publishing long-form breakdowns.
+
+            <p class="text-stone-600 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+              Co-building a web application designed to help VFR pilots prepare flights faster, more easily, and with greater safety. Features include simplified navigation logs, weather briefings, and route calculations ahead of release.
             </p>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700">Flight Planning</span>
+              <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700">Aeronautical Data</span>
+              <span class="px-2.5 py-1 text-xs font-mono rounded-md bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700">Meteorology</span>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-64 flex flex-col justify-between p-5 rounded-xl bg-white/80 dark:bg-stone-950/60 border border-stone-200 dark:border-stone-800 space-y-3 shrink-0">
+            <div>
+              <span class="text-[11px] font-mono uppercase text-stone-400 tracking-wider block">Initiative</span>
+              <p class="font-medium text-sm text-stone-800 dark:text-stone-200 mt-0.5">Product & Architecture</p>
+            </div>
+
+            <div class="pt-2 border-t border-stone-100 dark:border-stone-800 flex flex-col gap-2 font-mono text-xs">
+              <button onclick="handleShowModal('Alti-View Overview', 'Alti-View simplifies VFR flight navigation, integrating automated route altitude calculations, airspace NOTAM alerts, and aviation weather charts.')" class="w-full py-2 px-3 text-center rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 font-medium transition-opacity">
+                Read Overview &rarr;
+              </button>
+              <a href="https://x.com" target="_blank" class="w-full py-2 px-3 text-center rounded-lg border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-900 text-stone-700 dark:text-stone-300 transition-colors">
+                Connect on X
+              </a>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
+    <!-- Events Section -->
+    <section id="events" class="py-16 border-b border-stone-200 dark:border-stone-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-terracotta-500 dark:text-terracotta-400 font-semibold">Symposiums & Forums</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-normal mt-1 text-stone-900 dark:text-white">Events</h2>
+        </div>
+        <span class="text-xs font-mono text-stone-500">2026</span>
+      </div>
+
+      <div class="relative pl-6 sm:pl-8 border-l border-stone-300 dark:border-stone-800 space-y-8">
+        
+        <!-- Event 1 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-stone-50 dark:bg-stone-950 border-2 border-stone-900 dark:border-stone-100 group-hover:scale-125 transition-transform"></div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <span class="text-xs font-mono uppercase text-stone-500">June '26</span>
+            <span class="inline-block self-start sm:self-auto text-[11px] font-mono px-2 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Economics</span>
+          </div>
+
+          <h3 class="text-lg font-serif font-medium text-stone-900 dark:text-stone-100 mt-1 group-hover:text-terracotta-500 dark:group-hover:text-terracotta-400 transition-colors">
+            France-Japan Foundation / French Bank Summer Conference
+          </h3>
+          <p class="text-sm text-stone-600 dark:text-stone-400 mt-1 leading-relaxed">
+            International macroeconomics, sovereign balance sheets, and capital market dynamics.
+          </p>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-stone-50 dark:bg-stone-950 border-2 border-stone-400 dark:border-stone-600 group-hover:scale-125 transition-transform"></div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <span class="text-xs font-mono uppercase text-stone-500">June '26</span>
+            <span class="inline-block self-start sm:self-auto text-[11px] font-mono px-2 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Tech</span>
+          </div>
+
+          <h3 class="text-lg font-serif font-medium text-stone-900 dark:text-stone-100 mt-1 group-hover:text-terracotta-500 dark:group-hover:text-terracotta-400 transition-colors">
+            VivaTech Paris
+          </h3>
+          <p class="text-sm text-stone-600 dark:text-stone-400 mt-1 leading-relaxed">
+            Aviation technology solutions, real-time telemetry systems, and digital ventures.
+          </p>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-stone-50 dark:bg-stone-950 border-2 border-stone-400 dark:border-stone-600 group-hover:scale-125 transition-transform"></div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <span class="text-xs font-mono uppercase text-stone-500">March '26</span>
+            <span class="inline-block self-start sm:self-auto text-[11px] font-mono px-2 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-700 dark:text-stone-300">Risk & Modeling</span>
+          </div>
+
+          <h3 class="text-lg font-serif font-medium text-stone-900 dark:text-stone-100 mt-1 group-hover:text-terracotta-500 dark:group-hover:text-terracotta-400 transition-colors">
+            19th Financial Risks International Forum
+          </h3>
+          <p class="text-sm text-stone-600 dark:text-stone-400 mt-1 leading-relaxed">
+            Discussions on tail risk modeling, capital adequacy frameworks, and backtesting methodologies.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Selected Projects Section -->
+    <section id="projects" class="py-16 border-b border-stone-200 dark:border-stone-800/80">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-terracotta-500 dark:text-terracotta-400 font-semibold">Research & Modeling</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-normal mt-1 text-stone-900 dark:text-white">Selected Projects</h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-stone-200/60 dark:bg-stone-900 border border-stone-300/60 dark:border-stone-800 mt-4 sm:mt-0 overflow-x-auto text-xs font-mono">
+          <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1 rounded-lg transition-colors bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900" data-category="all">All</button>
+          <button onclick="filterProjects('risk')" class="filter-btn px-3 py-1 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white transition-colors" data-category="risk">Risk Modeling</button>
+          <button onclick="filterProjects('macro')" class="filter-btn px-3 py-1 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white transition-colors" data-category="macro">Econometrics</button>
+          <button onclick="filterProjects('aviation')" class="filter-btn px-3 py-1 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white transition-colors" data-category="aviation">Aviation & Accounting</button>
+        </div>
+      </div>
+
+      <!-- Project Cards List -->
+      <div class="space-y-6" id="projectsContainer">
+
+        <!-- Card 1: VaR / CVaR Modeling -->
+        <article class="project-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 hover:border-stone-400 dark:hover:border-stone-700 transition-all duration-200 shadow-sm" data-category="risk">
+          <div class="flex flex-col md:flex-row gap-5 items-start justify-between">
+            <div class="space-y-2.5 max-w-2xl">
+              <div class="flex items-center gap-2 text-xs font-mono text-stone-500">
+                <span class="text-terracotta-500 font-semibold">01</span>
+                <span>&bull;</span>
+                <span class="uppercase">Risk Management</span>
+                <span>&bull;</span>
+                <span>2026</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-snug">
+                Using Kernel Density Function and Student's t-distribution to model Value at Risk and Expected Shortfall using Monte Carlo method
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+                Monte Carlo method applied to non-parametric KDE and parametric Student's t-distribution to model Value at Risk and Expected Shortfall and compare against traditional GBM. Takes into consideration the Basel III/FRTB framework with backtesting performance evaluation.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Monte Carlo</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Basel III / FRTB</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">KDE & Student-t</span>
+              </div>
+            </div>
+            
+            <div class="flex md:flex-col items-center md:items-end gap-2 shrink-0 w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-stone-100 dark:border-stone-800 font-mono text-xs">
+              <button onclick="handlePaperView('CVaR & VaR Modeling Paper', 'Monte Carlo simulations comparing non-parametric KDE and Student-t modeling against normal distributions under FRTB guidelines.')" class="w-full md:w-auto px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity text-center">
+                Read Overview &nearr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Oil Convenience Yield Thesis -->
+        <article class="project-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 hover:border-stone-400 dark:hover:border-stone-700 transition-all duration-200 shadow-sm" data-category="macro">
+          <div class="flex flex-col md:flex-row gap-5 items-start justify-between">
+            <div class="space-y-2.5 max-w-2xl">
+              <div class="flex items-center gap-2 text-xs font-mono text-stone-500">
+                <span class="text-terracotta-500 font-semibold">02</span>
+                <span>&bull;</span>
+                <span class="uppercase">Econometrics Modeling</span>
+                <span>&bull;</span>
+                <span>Thesis</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-snug">
+                Assessment of the Uncertainty Dynamics Affecting the Convenience Yield of Oil
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+                Econometric modeling of uncertainty dynamics affecting the convenience yield of oil, evaluating both geopolitical uncertainty (GPR Index) and market volatility (VIX Index).
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">VIX & GPR Index</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Econometrics</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Commodity Yield</span>
+              </div>
+            </div>
+            
+            <div class="flex md:flex-col items-center md:items-end gap-2 shrink-0 w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-stone-100 dark:border-stone-800 font-mono text-xs">
+              <button onclick="handlePaperView('Convenience Yield Thesis', 'Empirical econometric study evaluating oil forward curve dynamics, convenience yield, and structural geopolitical volatility.')" class="w-full md:w-auto px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity text-center">
+                Read Overview &nearr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: IFRS 16 Airline Study -->
+        <article class="project-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 hover:border-stone-400 dark:hover:border-stone-700 transition-all duration-200 shadow-sm" data-category="aviation">
+          <div class="flex flex-col md:flex-row gap-5 items-start justify-between">
+            <div class="space-y-2.5 max-w-2xl">
+              <div class="flex items-center gap-2 text-xs font-mono text-stone-500">
+                <span class="text-terracotta-500 font-semibold">03</span>
+                <span>&bull;</span>
+                <span class="uppercase">Accounting & Standards</span>
+                <span>&bull;</span>
+                <span>2026</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-snug">
+                Airline reporting comparison regarding IFRS 16 and corporate leasing mitigation strategies
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+                Analysis of the implications of the IFRS 16 leasing standard for commercial airlines, highlighting financial strategies used to manage balance sheet leverage and lease liability exposure.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">IFRS 16</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Fleet Leasing</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Aviation Accounting</span>
+              </div>
+            </div>
+            
+            <div class="flex md:flex-col items-center md:items-end gap-2 shrink-0 w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-stone-100 dark:border-stone-800 font-mono text-xs">
+              <button onclick="handlePaperView('IFRS 16 Study', 'Comprehensive breakdown of airline balance sheet lease treatments and financing adjustments.')" class="w-full md:w-auto px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity text-center">
+                Read Overview &nearr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Airbus vs Boeing -->
+        <article class="project-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 hover:border-stone-400 dark:hover:border-stone-700 transition-all duration-200 shadow-sm" data-category="aviation">
+          <div class="flex flex-col md:flex-row gap-5 items-start justify-between">
+            <div class="space-y-2.5 max-w-2xl">
+              <div class="flex items-center gap-2 text-xs font-mono text-stone-500">
+                <span class="text-terracotta-500 font-semibold">04</span>
+                <span>&bull;</span>
+                <span class="uppercase">Corporate Finance</span>
+                <span>&bull;</span>
+                <span>2026</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-snug">
+                What Airbus's and Boeing's Q2 Results Say About Global Aviation's 2026 Trajectory
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+                Examination of the Q2 financial performance of Airbus and Boeing, contextualized within order backlog dynamics, supply chain constraints, and operational cash flow guidance.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Aerospace Industry</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Earnings Analysis</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Backlog Health</span>
+              </div>
+            </div>
+            
+            <div class="flex md:flex-col items-center md:items-end gap-2 shrink-0 w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-stone-100 dark:border-stone-800 font-mono text-xs">
+              <button onclick="handlePaperView('Airbus / Boeing Analysis', 'Review of delivery cadences, supply chain pressures, and comparative liquidity.')" class="w-full md:w-auto px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity text-center">
+                Read Overview &nearr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Beta Optimization -->
+        <article class="project-card p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 hover:border-stone-400 dark:hover:border-stone-700 transition-all duration-200 shadow-sm" data-category="risk">
+          <div class="flex flex-col md:flex-row gap-5 items-start justify-between">
+            <div class="space-y-2.5 max-w-2xl">
+              <div class="flex items-center gap-2 text-xs font-mono text-stone-500">
+                <span class="text-terracotta-500 font-semibold">05</span>
+                <span>&bull;</span>
+                <span class="uppercase">Portfolio Allocation</span>
+                <span>&bull;</span>
+                <span>2026</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 leading-snug">
+                Optimal allocation finding for an aggressive portfolio under given VaR constraint
+              </h3>
+              <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">
+                Determining the allocation that maximizes beta under a given MAVaR boundary constraint using KDE Monte Carlo simulation, SLSQP optimization, and walk-forward backtesting.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">SLSQP Optimization</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">MAVaR Constraint</span>
+                <span class="px-2 py-0.5 text-[11px] font-mono rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300">Walk-Forward</span>
+              </div>
+            </div>
+            
+            <div class="flex md:flex-col items-center md:items-end gap-2 shrink-0 w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-stone-100 dark:border-stone-800 font-mono text-xs">
+              <button onclick="handlePaperView('Beta-MAVaR Optimization', 'Methods for finding maximal portfolio beta conditioned on tail risk constraints.')" class="w-full md:w-auto px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 hover:opacity-90 transition-opacity text-center">
+                Read Overview &nearr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Curriculum Vitae Section -->
+    <section id="cv" class="py-16 border-b border-stone-200 dark:border-stone-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-terracotta-500 dark:text-terracotta-400 font-semibold">Profile</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-normal mt-1 text-stone-900 dark:text-white">Curriculum Vitae</h2>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <button onclick="handleDownloadCV()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-mono tracking-wider uppercase hover:opacity-90 transition-opacity">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Request CV (PDF)
+          </button>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200/90 dark:border-stone-800/90 mb-8">
+        <p class="text-stone-700 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+          Currently seeking internship opportunities for a gap year. Possesses a strong foundation in economics, statistical modeling, risk management, accounting (including IFRS standards), financial instruments, and corporate finance.
+        </p>
+      </div>
+
+      <!-- Competencies & Aviation Breakdown (De-identified) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Focus Areas -->
+        <div class="p-5 rounded-xl bg-white dark:bg-stone-900/50 border border-stone-200 dark:border-stone-800 space-y-3">
+          <h3 class="text-xs font-mono uppercase tracking-widest text-stone-500">Core Disciplines</h3>
+          <ul class="text-sm text-stone-700 dark:text-stone-300 space-y-2">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-terracotta-500"></span>
+              Market Risk & Value at Risk (VaR / Expected Shortfall)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-terracotta-500"></span>
+              Applied Mathematics & Econometric Modeling
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-terracotta-500"></span>
+              Accounting Frameworks & IFRS Standard Evaluation
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-terracotta-500"></span>
+              Monte Carlo Simulation & Portfolio Optimization
+            </li>
+          </ul>
+        </div>
+
+        <!-- Aviation Background -->
+        <div class="p-5 rounded-xl bg-white dark:bg-stone-900/50 border border-stone-200 dark:border-stone-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-mono uppercase tracking-widest text-stone-500">Aviation Qualifications</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300">110+ Flight Hours</span>
+          </div>
+          <p class="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+            Holder of the Light Aircraft Pilot License (LAPL). Flight experience accumulated primarily on Cessna (152, 172) and Piper (PA28) aircraft, along with active involvement in VFR flight software development.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+      <div class="rounded-3xl p-8 sm:p-12 bg-stone-900 text-stone-100 dark:bg-stone-900/90 dark:border dark:border-stone-800 relative overflow-hidden">
+        
+        <div class="max-w-2xl relative z-10 space-y-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-terracotta-400 font-medium">Get in Touch</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight">
+            Seeking Gap-Year Opportunities.
+          </h2>
+          <p class="text-stone-400 text-sm sm:text-base leading-relaxed">
+            Open to professional discussions and internship roles in risk management and market analysis.
+          </p>
+
+          <div class="pt-4 flex flex-col sm:flex-row gap-3 font-mono text-xs">
+            <a href="mailto:hughie.erskine@outlook.com" class="px-5 py-3 rounded-xl bg-white text-stone-950 font-semibold hover:bg-stone-200 transition-colors text-center">
+              hughie.erskine@outlook.com &rarr;
+            </a>
+            <button onclick="copyToClipboard('hughie.erskine@outlook.com')" class="px-5 py-3 rounded-xl border border-stone-700 hover:bg-stone-800 transition-colors text-stone-300">
+              Copy Email Address
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Minimalist Footer -->
-  <footer class="border-t border-paperBorder bg-white py-8">
-    <div class="max-w-3xl mx-auto px-6 flex items-center justify-between text-xs font-mono text-textMuted">
-      <div>
-        <span class="text-textPrimary font-medium">Hughie Erskine</span>
+  <!-- Clean Minimalist Footer -->
+  <footer class="border-t border-stone-200 dark:border-stone-800/80 py-8 px-6 text-stone-500 dark:text-stone-400 text-xs font-mono">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-terracotta-500"></span>
+        <span>Hughie Erskine &bull; 2026</span>
       </div>
-      <div>
-        <span>Personal Archive</span>
+      <div class="flex items-center gap-4">
+        <a href="https://x.com" target="_blank" class="hover:text-stone-900 dark:hover:text-white transition-colors">X</a>
+        <span>&bull;</span>
+        <a href="#about" class="hover:text-stone-900 dark:hover:text-white transition-colors">Back to top &uarr;</a>
       </div>
     </div>
   </footer>
 
+  <!-- Modal Component for Paper & Venture Views -->
+  <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 max-w-lg w-full rounded-2xl p-6 shadow-2xl space-y-4">
+      <div class="flex justify-between items-start">
+        <h3 id="modalTitle" class="font-serif text-xl font-medium text-stone-900 dark:text-white"></h3>
+        <button onclick="closeModal()" class="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <p id="modalBody" class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed"></p>
+      <div class="pt-3 border-t border-stone-100 dark:border-stone-800 flex justify-end">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900 text-xs font-mono uppercase">
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 transition-all duration-300 px-4 py-2.5 rounded-xl bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-950 font-mono text-xs shadow-xl flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toastMsg">Action completed</span>
+  </div>
+
   <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('active', 'bg-white', 'border', 'border-paperBorder', 'text-textPrimary', 'font-medium');
-          b.classList.add('text-textMuted');
-        });
-        btn.classList.add('active', 'bg-white', 'border', 'border-paperBorder', 'text-textPrimary', 'font-medium');
-        btn.classList.remove('text-textMuted');
+    // Theme Management (Light / Dark Mode)
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlEl.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    let darkPref = false;
+    try {
+      const stored = localStorage.getItem('theme_preference');
+      if (stored !== null) {
+        darkPref = stored === 'dark';
+      } else {
+        darkPref = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+    } catch(e) {
+      darkPref = false;
+    }
+    applyTheme(darkPref);
+
+    themeBtn.addEventListener('click', () => {
+      const isCurrentlyDark = htmlEl.classList.contains('dark');
+      const newDark = !isCurrentlyDark;
+      applyTheme(newDark);
+      try {
+        localStorage.setItem('theme_preference', newDark ? 'dark' : 'light');
+      } catch(e) {}
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
       });
     });
-  </script>
 
+    // Filter Projects Category Logic
+    function filterProjects(cat) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        if (btn.dataset.category === cat) {
+          btn.classList.add('bg-stone-900', 'text-white', 'dark:bg-stone-100', 'dark:text-stone-900');
+          btn.classList.remove('text-stone-600', 'dark:text-stone-400');
+        } else {
+          btn.classList.remove('bg-stone-900', 'text-white', 'dark:bg-stone-100', 'dark:text-stone-900');
+          btn.classList.add('text-stone-600', 'dark:text-stone-400');
+        }
+      });
+
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Control
+    const modal = document.getElementById('infoModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    function handlePaperView(title, desc) {
+      modalTitle.textContent = title;
+      modalBody.textContent = desc;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function handleShowModal(title, desc) {
+      modalTitle.textContent = title;
+      modalBody.textContent = desc;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Toast and Clipboard Handling
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    let toastTimeout;
+
+    function showToast(msg) {
+      clearTimeout(toastTimeout);
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-12');
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-12');
+      }, 3000);
+    }
+
+    function copyToClipboard(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      try {
+        document.execCommand('copy');
+        showToast('Email address copied');
+      } catch (err) {
+        showToast('Address: ' + text);
+      }
+      document.body.removeChild(el);
+    }
+
+    function handleDownloadCV() {
+      showToast('CV requested. Please email directly for copy.');
+    }
+
+    // Scroll Spy for Navigation Active States
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = ['about', 'ventures', 'events', 'projects', 'cv'];
+
+    window.addEventListener('scroll', () => {
+      let current = 'about';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            current = id;
+          }
+        }
+      });
+
+      navItems.forEach(item => {
+        const href = item.getAttribute('href').replace('#', '');
+        if (href === current) {
+          item.classList.add('bg-stone-200/80', 'dark:bg-stone-800', 'text-stone-900', 'dark:text-white');
+        } else {
+          item.classList.remove('bg-stone-200/80', 'dark:bg-stone-800', 'text-stone-900', 'dark:text-white');
+        }
+      });
+    }, { passive: true });
+  </script>
 </body>
 </html>
