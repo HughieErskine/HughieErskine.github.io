@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hughie Erskine — Aviation, Finance & AI</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Newsreader (Editorial Serif), Inter (Sans), JetBrains Mono (Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            paper: '#FAF8F5',
+            paperCard: '#FFFFFF',
+            paperBorder: '#EAE3D8',
+            paperBorderSubtle: '#F2ECE2',
+            textPrimary: '#1E2630',
+            textSecondary: '#4A5565',
+            textMuted: '#8A95A5',
+            pastelBlue: {
+              soft: '#EDF4FB',
+              border: '#CCE2F3',
+              text: '#204E71',
+            },
+            pastelYellow: {
+              soft: '#FEF9EB',
+              border: '#FDE68A',
+              text: '#92400E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E2630;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #FEF3C7;
+      color: #78350F;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Minimalist Header -->
+  <header class="sticky top-0 z-30 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-paperBorder">
+    <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <a href="#" class="group flex items-baseline gap-2.5">
+        <span class="font-serif text-lg font-medium text-textPrimary tracking-tight group-hover:text-textSecondary transition-colors">
+          Hughie Erskine
+        </span>
+        <span class="hidden sm:inline text-xs font-mono text-textMuted">
+          Aviation • Finance • AI
+        </span>
+      </a>
+
+      <!-- Clean Header Navigation -->
+      <nav class="flex items-center gap-5 text-xs font-mono">
+        <a href="#writing" class="text-textSecondary hover:text-textPrimary transition-colors">Writing</a>
+        <a href="#projects" class="text-textSecondary hover:text-textPrimary transition-colors">Projects</a>
+        <a href="#about" class="text-textSecondary hover:text-textPrimary transition-colors">About</a>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium text-textSecondary bg-white border border-paperBorder hover:border-textSecondary/40 hover:text-textPrimary transition-all shadow-2xs ml-1">
+          <i class="ph-bold ph-x-logo text-xs"></i>
+          <span>Follow</span>
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- Hero / Editorial Introduction -->
+    <section class="pt-16 pb-14 border-b border-paperBorderSubtle">
+      <div class="max-w-3xl mx-auto px-6">
+
+        <h1 class="font-serif text-3xl sm:text-4xl text-textPrimary font-normal tracking-tight leading-[1.28]">
+          Aviation economics, quantitative finance, and applied AI systems.
+        </h1>
+
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-1 rounded-full bg-pastelBlue-soft border border-pastelBlue-border text-[11px] font-mono text-pastelBlue-text">
+            Commercial Aviation
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-pastelYellow-soft border border-pastelYellow-border text-[11px] font-mono text-pastelYellow-text">
+            Capital Markets & Hedging
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-[#F3F4F6] border border-[#E5E7EB] text-[11px] font-mono text-[#374151]">
+            Applied Intelligence
+          </span>
+        </div>
+
+        <p class="mt-6 text-base text-textSecondary leading-relaxed max-w-2xl font-normal">
+          Personal notebook and publication archive by Hughie Erskine. In-depth analysis, empirical notes, and open-source tooling across fleet balance sheets, volatility, and software experiments.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Writing & Analysis Section -->
+    <section id="writing" class="py-14 border-b border-paperBorderSubtle">
+      <div class="max-w-3xl mx-auto px-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-8 pb-4 border-b border-paperBorder">
+          <h2 class="font-serif text-2xl text-textPrimary font-normal tracking-tight">
+            Analysis & Essays
+          </h2>
+          
+          <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
+            <button class="filter-btn active px-2.5 py-1 rounded-md bg-white border border-paperBorder text-textPrimary font-medium transition-all" data-filter="all">
+              All
+            </button>
+            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="aviation">
+              Aviation
+            </button>
+            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="finance">
+              Finance
+            </button>
+            <button class="filter-btn px-2.5 py-1 rounded-md text-textMuted hover:text-textPrimary hover:bg-white/50 transition-all" data-filter="ai">
+              AI
+            </button>
+          </div>
+        </div>
+
+        <!-- Clean Blank Structured Slots Ready for Content -->
+        <div class="space-y-5">
+
+          <div class="border border-dashed border-paperBorder rounded-xl p-6 sm:p-7 bg-white/40 hover:bg-white/70 transition-colors">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-mono mb-2 text-textMuted">
+              <span class="px-2 py-0.5 rounded bg-pastelBlue-soft text-pastelBlue-text border border-pastelBlue-border text-[11px]">
+                Aviation Economics
+              </span>
+              <span>•</span>
+              <span>Draft in Review</span>
+            </div>
+            <h3 class="font-serif text-xl font-normal text-textPrimary">
+              [Upcoming Analysis Title]
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-textSecondary leading-relaxed">
+              Article summary and core findings will appear here upon publication.
+            </p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-textMuted">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>Publishing soon</span>
+            </div>
+          </div>
+
+          <div class="border border-dashed border-paperBorder rounded-xl p-6 sm:p-7 bg-white/40 hover:bg-white/70 transition-colors">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-mono mb-2 text-textMuted">
+              <span class="px-2 py-0.5 rounded bg-pastelYellow-soft text-pastelYellow-text border border-pastelYellow-border text-[11px]">
+                Finance & Risk
+              </span>
+              <span>•</span>
+              <span>Draft in Review</span>
+            </div>
+            <h3 class="font-serif text-xl font-normal text-textPrimary">
+              [Upcoming Research Note]
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-textSecondary leading-relaxed">
+              Detailed breakdown of market indices, treasury volatility, or capital deployment mechanics.
+            </p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-mono text-textMuted">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <span>Publishing soon</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Small Projects Section -->
+    <section id="projects" class="py-14 border-b border-paperBorderSubtle">
+      <div class="max-w-3xl mx-auto px-6">
+        
+        <div class="flex items-baseline justify-between mb-8 pb-3 border-b border-paperBorder">
+          <h2 class="font-serif text-2xl text-textPrimary font-normal tracking-tight">
+            Small Projects & Tools
+          </h2>
+          <span class="text-xs font-mono text-textMuted">Upcoming Releases</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div class="border border-dashed border-paperBorder rounded-xl p-5 bg-white/40 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-textMuted mb-2">
+                <span class="font-medium text-textPrimary">[Project Alpha]</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-pastelBlue-soft text-pastelBlue-text border border-pastelBlue-border">CLI Tool</span>
+              </div>
+              <p class="text-xs text-textSecondary leading-relaxed mt-2">
+                Minimalist data extraction or quantitative tooling repository. Source code, documentation, and install scripts will be linked here.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-paperBorderSubtle flex items-center justify-between text-xs font-mono text-textMuted">
+              <span>Status: Staging</span>
+              <span>GitHub ↗</span>
+            </div>
+          </div>
+
+          <div class="border border-dashed border-paperBorder rounded-xl p-5 bg-white/40 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-textMuted mb-2">
+                <span class="font-medium text-textPrimary">[Project Beta]</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-pastelYellow-soft text-pastelYellow-text border border-pastelYellow-border">Library</span>
+              </div>
+              <p class="text-xs text-textSecondary leading-relaxed mt-2">
+                Open-source model weights, embeddings index, or financial time-series helper utility ready for release.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-paperBorderSubtle flex items-center justify-between text-xs font-mono text-textMuted">
+              <span>Status: Testing</span>
+              <span>GitHub ↗</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-14">
+      <div class="max-w-3xl mx-auto px-6">
+        
+        <div class="bg-white border border-paperBorder rounded-2xl p-7 sm:p-9 shadow-2xs">
+          <div class="max-w-xl">
+            <span class="text-xs font-mono uppercase tracking-wider text-textMuted">About Hughie</span>
+            <h3 class="font-serif text-2xl text-textPrimary font-normal mt-1 mb-3">
+              Background & Focus
+            </h3>
+            <p class="text-sm text-textSecondary leading-relaxed font-normal">
+              Exploring the convergence of capital markets, fleet dynamics, and machine intelligence. Building independent prototypes and publishing long-form breakdowns.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimalist Footer -->
+  <footer class="border-t border-paperBorder bg-white py-8">
+    <div class="max-w-3xl mx-auto px-6 flex items-center justify-between text-xs font-mono text-textMuted">
+      <div>
+        <span class="text-textPrimary font-medium">Hughie Erskine</span>
+      </div>
+      <div>
+        <span>Personal Archive</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-white', 'border', 'border-paperBorder', 'text-textPrimary', 'font-medium');
+          b.classList.add('text-textMuted');
+        });
+        btn.classList.add('active', 'bg-white', 'border', 'border-paperBorder', 'text-textPrimary', 'font-medium');
+        btn.classList.remove('text-textMuted');
+      });
+    });
+  </script>
+
+</body>
+</html>
