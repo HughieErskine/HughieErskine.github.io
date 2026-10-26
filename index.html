@@ -18,38 +18,36 @@
   <!-- Header menu styles (pixel look). Kept after style.css so they take priority. -->
   <style>
     html { scroll-behavior: smooth; }
-    .content-section, .hero-section { scroll-margin-top: 150px; }
+    .content-section, .hero-section { scroll-margin-top: 110px; }
 
     .site-header {
       --pixel: "Silkscreen", "Courier New", monospace;
       --ink: #f8f9fb;
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 100;
-      background: rgba(8, 10, 16, 0.88);
+      width: min(1100px, calc(100% - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 0 24px;
+      background: rgba(8, 10, 16, 0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
       font-family: var(--pixel);
       text-transform: uppercase;
       -webkit-font-smoothing: none;
       font-smooth: never;
     }
 
-    /* ---- top row ---- */
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 48px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.14);
-    }
-
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
       color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
     }
     .brand-name {
       font-family: var(--pixel);
@@ -58,25 +56,8 @@
       letter-spacing: 0.32em;
     }
 
-    .tool-btn {
-      display: grid;
-      place-items: center;
-      height: 36px;
-      padding-left: 18px;
-      border-left: 2px solid rgba(255, 255, 255, 0.18);
-      color: var(--ink);
-      text-decoration: none;
-      font-family: var(--pixel);
-      font-size: 16px;
-    }
-    .tool-btn:hover { color: #e5a93b; }
-
-    /* ---- nav row ---- */
     .main-nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      padding: 0 48px;
+      margin-left: auto;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -86,7 +67,7 @@
     .nav-links a {
       position: relative;
       display: block;
-      padding: 18px 0;
+      padding: 20px 0;
       color: var(--ink);
       text-decoration: none;
       font-family: var(--pixel);
@@ -94,8 +75,7 @@
       font-weight: 700;
       letter-spacing: 0.28em;
       white-space: nowrap;
-      opacity: 0.75;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      opacity: 0.7;
       transition: opacity 0.15s;
     }
     .nav-links a:hover { opacity: 1; }
@@ -114,11 +94,29 @@
     .nav-links a.active { opacity: 1; }
     .nav-links a.active::after { transform: scaleX(1); }
 
+    .header-tools { display: flex; align-items: center; }
+    .tool-btn {
+      display: grid;
+      place-items: center;
+      height: 36px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(255, 255, 255, 0.25);
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--pixel);
+      font-size: 16px;
+    }
+    .tool-btn:hover { color: #e5a93b; }
+
     /* ---- small screens ---- */
     @media (max-width: 720px) {
-      .header-top, .main-nav { padding-left: 20px; padding-right: 20px; }
+      .site-header { flex-wrap: wrap; gap: 0 16px; padding: 0 16px; top: 10px; }
+      .brand { padding: 14px 0 6px; }
       .brand-name { font-size: 12px; letter-spacing: 0.2em; }
+      .header-tools { margin-left: auto; padding-top: 4px; }
+      .main-nav { order: 3; width: 100%; margin-left: 0; border-top: 2px solid rgba(255, 255, 255, 0.2); }
       .nav-links { gap: 22px; }
+      .nav-links a { padding: 14px 0; }
     }
   </style>
 </head>
@@ -135,15 +133,9 @@
 
   <!-- Sticky Header with Navigation Menu -->
   <header class="site-header">
-    <div class="header-top">
-      <a href="#top" class="brand" title="Back to top">
-        <span class="brand-name">Hughie Erskine</span>
-      </a>
-
-      <div class="header-tools">
-        <a href="https://x.com/hughie_erskine" target="_blank" rel="noopener noreferrer" class="tool-btn" aria-label="Hughie on X">𝕏</a>
-      </div>
-    </div>
+    <a href="#top" class="brand" title="Back to top">
+      <span class="brand-name">Hughie Erskine</span>
+    </a>
 
     <nav class="main-nav" aria-label="Primary">
       <ul class="nav-links">
@@ -153,6 +145,10 @@
         <li><a href="#contact" data-target="contact">Contact</a></li>
       </ul>
     </nav>
+
+    <div class="header-tools">
+      <a href="https://x.com/hughie_erskine" target="_blank" rel="noopener noreferrer" class="tool-btn" aria-label="Hughie on X">𝕏</a>
+    </div>
   </header>
 
   <!-- Scrolling Content Container -->
