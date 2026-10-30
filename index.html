@@ -108,16 +108,72 @@
     }
     .tool-btn:hover { color: #e5a93b; }
 
-    /* ---- X posts feed (pixel look) ---- */
+    /* ---- X posts: latest post (hero) + scrollable feed (pixel look) ---- */
+    .latest-post,
     .x-feed {
-      max-width: 680px;
-      min-height: 120px;
-      padding: 8px;
       background: rgba(8, 10, 16, 0.92);
       border: 2px solid rgba(255, 255, 255, 0.85);
       box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+      color: #f8f9fb;
+      text-align: left;
     }
-    .x-feed .twitter-timeline { color: #f8f9fb; }
+    .latest-post {
+      width: min(560px, 100%);
+      margin-top: 32px;
+      padding: 16px 20px 18px;
+    }
+    .latest-post[hidden] { display: none; }
+
+    .x-feed {
+      max-width: 680px;
+      max-height: 560px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #f8f9fb rgba(8, 10, 16, 0.92);
+    }
+    .x-feed:focus-visible { outline: 3px solid #e5a93b; outline-offset: 3px; }
+    .x-feed-more {
+      display: inline-block;
+      margin-top: 20px;
+      color: #f8f9fb;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+    .x-feed-more:hover { color: #e5a93b; }
+
+    .x-post { padding: 16px 20px 18px; }
+    .x-post + .x-post { border-top: 2px solid rgba(255, 255, 255, 0.18); }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: #e5a93b;
+    }
+    .post-text {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .post-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #f8f9fb;
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+    }
+    .post-link:hover { color: #e5a93b; opacity: 1; }
 
     /* ---- small screens ---- */
     @media (max-width: 720px) {
@@ -172,6 +228,9 @@
         <h1 class="headline">
           Aeronautics, capital, and software.
         </h1>
+
+        <!-- Latest post from X (filled in by the script at the bottom of the page) -->
+        <div class="latest-post" id="latest-post" hidden></div>
       </div>
     </section>
 
@@ -265,16 +324,9 @@
         <h2 class="section-title">Posts</h2>
       </div>
 
-      <div class="x-feed">
-        <a class="twitter-timeline"
-           data-theme="dark"
-           data-height="720"
-           data-dnt="true"
-           data-chrome="noheader nofooter noborders transparent"
-           href="https://twitter.com/hughie_erskine?ref_src=twsrc%5Etfw">
-          Posts by @hughie_erskine
-        </a>
-      </div>
+      <div class="x-feed" id="x-feed" tabindex="0" role="region" aria-label="Posts from X, scrollable"></div>
+
+      <a class="x-feed-more font-mono" href="https://x.com/hughie_erskine" target="_blank" rel="noopener noreferrer">ALL POSTS ON X ↗</a>
     </section>
 
     <!-- Section 4: Contact (Full Width & Integrated) -->
@@ -362,8 +414,71 @@
 
   <script src="app.js"></script>
 
-  <!-- X timeline embed -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!-- Your X posts. Add one entry per post. The newest by date is shown at the top of the page.
+       "url" is the post's own link (https://x.com/hughie_erskine/status/...). -->
+  <script id="posts-data" type="application/json">
+  [
+    {
+      "date": "2026-10-30",
+      "text": "Your most recent post goes here.",
+      "url": "https://x.com/hughie_erskine"
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Older posts go here, one entry each.",
+      "url": "https://x.com/hughie_erskine"
+    }
+  ]
+  </script>
+
+  <!-- Renders the latest post (hero) and the scrollable feed -->
+  <script>
+    (function () {
+      var PROFILE = 'https://x.com/hughie_erskine';
+      var posts = [];
+      try { posts = JSON.parse(document.getElementById('posts-data').textContent); } catch (e) {}
+      posts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+      var fmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+      function el(tag, cls, text) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text) n.textContent = text;
+        return n;
+      }
+
+      function fill(box, p, label) {
+        var meta = el('div', 'post-meta');
+        meta.appendChild(el('span', '', label));
+        meta.appendChild(el('span', '', fmt.format(new Date(p.date)).toUpperCase()));
+        box.appendChild(meta);
+        box.appendChild(el('p', 'post-text', p.text));
+        var a = el('a', 'post-link', 'VIEW ON X ↗');
+        a.href = p.url || PROFILE;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        box.appendChild(a);
+      }
+
+      var latest = document.getElementById('latest-post');
+      var feed = document.getElementById('x-feed');
+
+      if (!posts.length) {
+        feed.appendChild(el('p', 'x-post post-text', 'No posts to show yet. Follow along on X.'));
+        return;
+      }
+
+      fill(latest, posts[0], 'LATEST POST');
+      latest.hidden = false;
+
+      posts.forEach(function (p) {
+        var item = el('article', 'x-post');
+        fill(item, p, '@HUGHIE_ERSKINE');
+        feed.appendChild(item);
+      });
+    })();
+  </script>
 
   <!-- Active-link highlight for the header menu -->
   <script>
