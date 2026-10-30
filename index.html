@@ -108,6 +108,17 @@
     }
     .tool-btn:hover { color: #e5a93b; }
 
+    /* ---- X posts feed (pixel look) ---- */
+    .x-feed {
+      max-width: 680px;
+      min-height: 120px;
+      padding: 8px;
+      background: rgba(8, 10, 16, 0.92);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+    }
+    .x-feed .twitter-timeline { color: #f8f9fb; }
+
     /* ---- small screens ---- */
     @media (max-width: 720px) {
       .site-header { flex-wrap: wrap; gap: 0 16px; padding: 0 16px; top: 10px; }
@@ -142,6 +153,7 @@
         <li><a href="#top" data-target="top">Home</a></li>
         <li><a href="#market-reports" data-target="market-reports">Reports</a></li>
         <li><a href="#events" data-target="events">Events</a></li>
+        <li><a href="#posts" data-target="posts">Posts</a></li>
         <li><a href="#contact" data-target="contact">Contact</a></li>
       </ul>
     </nav>
@@ -246,7 +258,26 @@
       </div>
     </section>
 
-    <!-- Section 3: Contact (Full Width & Integrated) -->
+    <!-- Section 3: Posts (X timeline) -->
+    <section class="content-section" id="posts">
+      <div class="section-header">
+        <span class="section-kicker font-mono">TRANSMISSIONS</span>
+        <h2 class="section-title">Posts</h2>
+      </div>
+
+      <div class="x-feed">
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="720"
+           data-dnt="true"
+           data-chrome="noheader nofooter noborders transparent"
+           href="https://twitter.com/hughie_erskine?ref_src=twsrc%5Etfw">
+          Posts by @hughie_erskine
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 4: Contact (Full Width & Integrated) -->
     <section class="content-section contact-section" id="contact">
       <div class="contact-header">
         <span class="section-kicker font-mono">COMMUNICATIONS</span>
@@ -330,6 +361,9 @@
   </aside>
 
   <script src="app.js"></script>
+
+  <!-- X timeline embed -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- Active-link highlight for the header menu -->
   <script>
